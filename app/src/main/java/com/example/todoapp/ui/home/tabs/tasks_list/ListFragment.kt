@@ -25,6 +25,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+
     }
 
     override fun onStart() {
@@ -40,9 +41,44 @@ class ListFragment : Fragment() {
             adapter.updateTasks(tasksList)}
 
     }
+    private fun refreshRecyclerView() {
+//        adapter.changeDate(MyDataBase.getDataBase(requireActivity()).getDao().getAllTasks())
+        adapter.notifyDataSetChanged()
+    }
 
     var adapter = TasksAdapter(null)
     private fun initViews() {
         viewBinding.recyclerView.adapter =adapter
+        adapter.onItemDeleteClickListnereCard = object : TasksAdapter.OnItemDeleteClickListnereCard{
+            override fun onItemDeleteClick(position: Int, task: Task) {
+                deleteDate(task)
+            }
+        }
+        adapter.onItemClickListnerCard = object : TasksAdapter.OnItemClickListnerCard{
+            override fun onClick(position: Int, task: Task) {
+                showTasksDetails(task)
+            }
+
+        }
+    }
+
+    private fun showTasksDetails(task: Task) {
+    var intent = Intent(activity,EditTaskActivity::class.java)
+        intent.putExtra("OBJ_KEY",task)
+        startActivity(intent)
+    }
+
+    fun deleteDate(task: Task){
+        context?.let {
+               MyDataBase.getInstance(it)
+                .TasksDao()
+                .deletTask(task)
+            refreshTasks()
+
+        }
+    }
+    fun refreshTasks(){
+        adapter.updateTasks(MyDataBase.getInstance(requireContext()).TasksDao().allTasks())
+        adapter.notifyDataSetChanged()
     }
 }

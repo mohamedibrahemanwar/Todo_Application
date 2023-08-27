@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.EditTaskActivity">
+    tools:context="com.example.todo.ui.home.EditTaskActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -78,6 +78,7 @@
                     android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:hint="Please Enter ur Descriptin"
                     android:lines="5"
                     android:maxLines="5"
@@ -104,6 +105,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
