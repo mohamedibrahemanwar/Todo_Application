@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@color/colorBackgroung"
+    tools:context=".ui.home.tabs.SettingsFragment">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+        android:text="Language"
+       android:textSize="14sp"
+       android:textStyle="bold"
+       android:layout_marginStart="15dp"
+       />
+
+   <Spinner
+       android:id="@+id/spinner_Language"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="15dp"
+       android:layout_marginStart="25dp"
+       android:background="@android:drawable/btn_dropdown"
+       android:spinnerMode="dropdown"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Mode"
+       android:layout_marginTop="20dp"
+       android:textSize="14sp"
+       android:textStyle="bold"
+       android:layout_marginStart="15dp"
+       />
+
+   <Spinner
+       android:id="@+id/spinner_Mode"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="15dp"
+       android:layout_marginStart="25dp"
+       android:background="@android:drawable/btn_dropdown"
+       android:spinnerMode="dropdown"/>
+</LinearLayout>
