@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
 
         }
             )
+
         viewBinding.addTask.setOnClickListener {
             showAddTastBottomSheet()
         }
@@ -49,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
     private fun showAddTastBottomSheet() {
         val addTask = AddTaskFragment()
         addTask.onTaskAddedListener = AddTaskFragment.OnTaskAddedListener{
-            Snackbar.make(viewBinding.root,"Task Added", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(viewBinding.root,"Task Added", 1000).show()
             //notify tasks list fragment
             taskListFragmentRef?.loadDate()
         }
