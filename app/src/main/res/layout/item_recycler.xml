@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zerobranch.layout.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zerobranch.layout.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swap"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:leftItem="@id/delete"
     app:draggedItem="@id/card"
-app:swipeDirection="right"
+    app:swipeDirection="right"
+
     >
     <ImageView
         android:id="@+id/delete"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_margin="12dp"
         android:src="@drawable/ic_delete"
+        android:paddingHorizontal="30dp"
+        android:background="@drawable/shape_rounded_left"
         />
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         app:cardCornerRadius="18dp"
         app:cardElevation="18dp"
         app:contentPadding="12dp">
