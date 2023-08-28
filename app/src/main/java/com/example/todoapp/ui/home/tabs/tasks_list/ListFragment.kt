@@ -10,6 +10,9 @@ import com.example.todo.databases.MyDataBase
 import com.example.todo.databases.Task
 import com.example.todoapp.databinding.FragmentListBinding
 import com.example.todo.ui.home.EditTaskActivity
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
+import java.util.Calendar
 
 class ListFragment : Fragment() {
     lateinit var viewBinding : FragmentListBinding
@@ -37,16 +40,21 @@ class ListFragment : Fragment() {
         context?.let {
             val tasksList =MyDataBase.getInstance(requireContext())
             .TasksDao()
-            .allTasks()
+            .allTasksbyDate(selectedDate.timeInMillis)
             adapter.updateTasks(tasksList)}
 
     }
-    private fun refreshRecyclerView() {
-//        adapter.changeDate(MyDataBase.getDataBase(requireActivity()).getDao().getAllTasks())
-        adapter.notifyDataSetChanged()
-    }
+
 
     var adapter = TasksAdapter(null)
+
+    var selectedDate = Calendar.getInstance()
+    init {
+        selectedDate.set(Calendar.HOUR_OF_DAY,0)
+        selectedDate.set(Calendar.MINUTE,0)
+        selectedDate.set(Calendar.SECOND,0)
+        selectedDate.set(Calendar.MILLISECOND,0)
+    }
     private fun initViews() {
         viewBinding.recyclerView.adapter =adapter
         adapter.onItemDeleteClickListnereCard = object : TasksAdapter.OnItemDeleteClickListnereCard{
@@ -54,6 +62,21 @@ class ListFragment : Fragment() {
                 deleteDate(task)
             }
         }
+        viewBinding.calendarView.setSelectedDate(
+            CalendarDay.today()
+        )
+
+
+        viewBinding.calendarView.setOnDateChangedListener(OnDateSelectedListener
+        { widget, date, selected ->
+            if (selected){
+                //reload tasks in selected date
+                selectedDate.set(Calendar.YEAR,date.year)
+                selectedDate.set(Calendar.MONTH,date.month-1)
+                selectedDate.set(Calendar.DAY_OF_MONTH,date.day)
+                loadDate()
+            }
+        })
         adapter.onItemClickListnerCard = object : TasksAdapter.OnItemClickListnerCard{
             override fun onClick(position: Int, task: Task) {
                 showTasksDetails(task)

@@ -38,9 +38,10 @@ val calender = Calendar.getInstance()
     private fun showDatePickerDialog() {
         context?.let {
             val dialog = DatePickerDialog(it)
-            dialog.setOnDateSetListener { datePicket, day, month, year ->
+            dialog.setOnDateSetListener { datePicket, year, month, day ->
                 viewBinding.date.text = "$day-${month+1}-$year"
                 calender.set(year,month,day)
+                // to ignore time
                 calender.set(Calendar.HOUR_OF_DAY,0)
                 calender.set(Calendar.MINUTE,0)
                 calender.set(Calendar.SECOND,0)
