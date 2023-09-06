@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.todo.databases.Task
 import com.example.todoapp.databinding.ItemRecyclerBinding
+import com.example.todoapp.ui.home.dateformat.Convertor
 import com.zerobranch.layout.SwipeLayout.SwipeActionsListener
 
 class TasksAdapter(var tasks: List<Task>?) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
@@ -43,9 +44,13 @@ class TasksAdapter(var tasks: List<Task>?) : RecyclerView.Adapter<TasksAdapter.V
 
     class ViewHolder(var itemBinding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bind(task: Task) {
             itemBinding.titleCard.text = task.nameTask
             itemBinding.descCard.text = task.descriptionTask
+            var convertor =Convertor()
+            var date = convertor.format(task.dateTime!!)
+            itemBinding.date.text = date
         }
     }
 //Call backs

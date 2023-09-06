@@ -77,16 +77,12 @@ class ListFragment : Fragment() {
                 loadDate()
             }
         })
-        adapter.onItemClickListnerCard = object : TasksAdapter.OnItemClickListnerCard{
-            override fun onClick(position: Int, task: Task) {
-                showTasksDetails(task)
-            }
-
-        }
+        adapter.onItemClickListnerCard =
+            TasksAdapter.OnItemClickListnerCard { position, task -> showTasksDetails(task) }
     }
 
     private fun showTasksDetails(task: Task) {
-    var intent = Intent(activity,EditTaskActivity::class.java)
+    var intent = Intent(requireContext(),EditTaskActivity::class.java)
         intent.putExtra("OBJ_KEY",task)
         startActivity(intent)
     }

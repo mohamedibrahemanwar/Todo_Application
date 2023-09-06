@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.todoapp.databases.TasksDao
 
 @Database(entities = [Task::class], version = 1, exportSchema = true)
 abstract class MyDataBase: RoomDatabase() {
-    abstract fun TasksDao():TasksDao
+    abstract fun TasksDao(): TasksDao
 companion object{
     private var instance : MyDataBase? = null
 

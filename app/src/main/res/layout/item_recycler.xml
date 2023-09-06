@@ -38,11 +38,23 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBackgroundToolBar"
                 android:textSize="18sp"
-
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Play basket ball" />
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="10-2-2023"
+                android:textColor="@color/colorBackgroundToolBar"
+                app:layout_constraintTop_toBottomOf="@id/desc_card"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="15sp"
+
+                android:layout_marginEnd="20dp"
+                />
 
             <TextView
                 android:id="@+id/desc_card"
@@ -58,7 +70,7 @@
                 app:layout_constraintEnd_toEndOf="@id/title_card"
                 app:layout_constraintStart_toStartOf="@id/title_card"
                 app:layout_constraintTop_toBottomOf="@id/title_card"
-                tools:text="10:30 AM" />
+                tools:text="Description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </com.zerobranch.layout.SwipeLayout>
